@@ -14,10 +14,6 @@
       text-align: center;
       overflow-x: hidden;
     }
-.logo {
-  width: 60px;   /* smaller size */
-  height: auto;
-}
 
     .container {
       max-width: 1000px;
@@ -134,11 +130,30 @@
 </head>
 <body>
   <div class="container">
- <div class="title-row">
+<div class="title-row">
   <img src="logo-left.jpg" alt="Left Logo" class="logo">
   <div class="title">SPORTING FP</div>
   <img src="logo-right.jpg" alt="Right Logo" class="logo">
 </div>
+
+<style>
+  .title-row {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* centers everything in one row */
+    gap: 20px; /* space between logo and title */
+    margin-top: 20px;
+  }
+
+  .title-row .title {
+    font-size: 120px;  /* adjust as needed */
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 15px #c8102e, 0 0 30px #ff1a40;
+  }
+
+  
+</style>
 
     <div class="subtitle">Our Team</div>
 
@@ -211,4 +226,3 @@
   </div>
 </body>
 </html>
-
