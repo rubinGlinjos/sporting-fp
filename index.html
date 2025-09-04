@@ -3,118 +3,138 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sporting FC Poster</title>
+  <title>Sporting FP</title>
   <style>
-    @page {
-      size: A4 landscape;   /* ensures printable A4 size */
-      margin: 0;
-    }
-
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
-                  url('background.jpg') no-repeat center center/cover;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+                  url('background.jpeg') no-repeat center center/cover;
       color: #fff;
       text-align: center;
-      width: 100%;
-      height: 100vh; /* fit to screen but A4 ratio */
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     .container {
-      padding: 40px;
-      box-sizing: border-box;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
     }
 
-    /* Title */
+    /* Title animation */
     .title {
-      font-size: 80px;
+      font-size: 64px;
       font-weight: 900;
       color: #ffffff;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
       animation: glow 2s infinite alternate;
-      margin-top: 10px;
-      text-transform: uppercase;
+      margin-top: 20px;
     }
 
     @keyframes glow {
-      from { text-shadow: 0 0 10px #c8102e, 0 0 20px #c8102e; }
-      to { text-shadow: 0 0 25px #ff1a40, 0 0 50px #ff1a40; }
+      from { text-shadow: 0 0 5px #c8102e, 0 0 10px #c8102e; }
+      to { text-shadow: 0 0 15px #ff1a40, 0 0 30px #ff1a40; }
     }
 
     .subtitle {
-      font-size: 32px;
+      font-size: 24px;
       font-weight: 600;
       margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+      animation-delay: 0.5s;
     }
 
     /* Card grid */
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      justify-items: center;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
       margin-bottom: 40px;
     }
 
     .card {
       position: relative;
       background: #111;
-      border-radius: 15px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-      width: 250px;
-      height: 350px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+      transform: translateY(30px);
+      opacity: 0;
+      animation: slideUp 1s ease forwards;
     }
 
     .card img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
       display: block;
+      object-fit: cover;
+      height: 180px;
       transition: transform 0.4s ease;
     }
 
     .card:hover img {
-      transform: scale(1.08);
+      transform: scale(1.1);
     }
 
-    /* Ribbon */
+    /* Ribbon style */
     .ribbon {
       position: absolute;
-      left: -55px;
-      top: 45%;
+      left: -40px;
+      top: 40%;
       transform: rotate(-90deg);
       background: #c8102e;
       color: #fff;
-      font-size: 18px;
+      font-size: 14px;
       font-weight: 700;
-      padding: 8px 50px;
+      padding: 6px 40px;
       text-transform: uppercase;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.5);
-      white-space: nowrap;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .title {
+        font-size: 48px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+      .title {
+        font-size: 36px;
+      }
     }
 
     footer {
-      font-size: 20px;
+      margin-top: 40px;
+      font-size: 14px;
       color: #bbb;
-      margin-bottom: 15px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div>
-      <div class="title">SPORTING FC</div>
-      <div class="subtitle">PFL Season 2 - Our Team</div>
-    </div>
+    <div class="title">SPORTING FP</div>
+    <div class="subtitle">Our Team</div>
 
     <!-- Managers -->
-    <h2 style="font-size:30px; margin: 20px 0;">Managers</h2>
+    <h2>Managers</h2>
     <div class="card-grid">
       <div class="card">
         <img src="ruby.jpg" alt="RUBY">
@@ -127,7 +147,7 @@
     </div>
 
     <!-- Players -->
-    <h2 style="font-size:30px; margin: 20px 0;">Players</h2>
+    <h2>Players</h2>
     <div class="card-grid">
       <div class="card">
         <img src="pakru.jpg" alt="PAKRU">
@@ -164,7 +184,7 @@
     </div>
 
     <!-- Sponsors -->
-    <h2 style="font-size:30px; margin: 20px 0;">Sponsors</h2>
+    <h2>Sponsors</h2>
     <div class="card-grid">
       <div class="card">
         <img src="sponsor1.png" alt="Sponsor 1">
@@ -175,10 +195,10 @@
         <div class="ribbon">SUDHEESH K V<br><span>Sponsor</span></div>
       </div>
     </div>
-  </div>
 
-  <footer>
-    © 2025 Sporting FP. All rights reserved.
-  </footer>
+    <footer>
+      © 2025 Sporting FP. All rights reserved.
+    </footer>
+  </div>
 </body>
 </html>
