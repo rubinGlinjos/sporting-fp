@@ -9,127 +9,87 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
-                  url('stadium-bg.jpg') no-repeat center center/cover;
+                  url('https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?auto=format&fit=crop&w=1650&q=80') 
+                  no-repeat center center/cover;
       color: #fff;
       text-align: center;
       overflow-x: hidden;
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 30px 20px;
+      padding: 20px;
     }
 
     /* Title animation */
     .title {
       font-size: 64px;
       font-weight: 900;
-      color: #ff2a43;
-      letter-spacing: 3px;
-      text-transform: uppercase;
+      color: #c8102e;
+      letter-spacing: 2px;
       animation: glow 2s infinite alternate;
-      margin-bottom: 10px;
+      margin-top: 20px;
     }
 
     @keyframes glow {
-      from { text-shadow: 0 0 10px #ff2a43, 0 0 20px #ff2a43; }
-      to { text-shadow: 0 0 20px #ff4d63, 0 0 40px #ff4d63; }
+      from { text-shadow: 0 0 5px #c8102e, 0 0 10px #c8102e; }
+      to { text-shadow: 0 0 15px #ff1a40, 0 0 30px #ff1a40; }
     }
 
     .subtitle {
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 600;
-      margin-bottom: 40px;
-      color: #ddd;
+      margin-bottom: 20px;
       opacity: 0;
       animation: fadeIn 2s ease forwards;
       animation-delay: 0.5s;
     }
 
-    h2 {
-      font-size: 28px;
-      margin: 40px 0 20px;
-      color: #ffcc00;
-      text-transform: uppercase;
-      border-bottom: 2px solid rgba(255,204,0,0.6);
-      display: inline-block;
-      padding-bottom: 5px;
-    }
-
-    /* Reusable card (for managers, players, sponsors) */
+    /* Card grid */
     .card-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      gap: 15px;
       margin-bottom: 40px;
     }
 
     .card {
       position: relative;
       background: #111;
-      border-radius: 14px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
       transform: translateY(30px);
       opacity: 0;
       animation: slideUp 1s ease forwards;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .card img {
       width: 100%;
       display: block;
       object-fit: cover;
-      height: 200px;
+      height: 180px;
       transition: transform 0.4s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 20px rgba(255,255,255,0.2);
     }
 
     .card:hover img {
       transform: scale(1.1);
     }
 
-    /* Bottom-left ribbon */
-    .stripe {
+    /* Ribbon style */
+    .ribbon {
       position: absolute;
-      bottom: 15px;
-      left: 0;
-      width: 70%;
-      background: rgba(200,16,46,0.95);
+      left: -40px;
+      top: 40%;
+      transform: rotate(-90deg);
+      background: #c8102e;
       color: #fff;
-      padding: 10px;
       font-size: 14px;
-      font-weight: bold;
-      text-align: left;
-      border-top-right-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-    }
-
-    .stripe span {
-      display: block;
-      font-size: 12px;
-      font-weight: normal;
-    }
-
-    /* Stadium light sweep effect */
-    body::after {
-      content: "";
-      position: fixed;
-      top: 0; left: -50%;
-      width: 200%; height: 100%;
-      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
-      animation: sweep 6s infinite linear;
-      pointer-events: none;
-    }
-
-    @keyframes sweep {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
+      font-weight: 700;
+      padding: 6px 40px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
     }
 
     /* Animations */
@@ -155,11 +115,17 @@
 
     @media (max-width: 480px) {
       .card-grid {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: 1fr;
       }
       .title {
         font-size: 36px;
       }
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #bbb;
     }
   </style>
 </head>
@@ -173,11 +139,11 @@
     <div class="card-grid">
       <div class="card">
         <img src="ruby.jpg" alt="RUBY">
-        <div class="stripe">RUBY <span>Manager (09)</span></div>
+        <div class="ribbon">RUBY<br><span>Manager (09)</span></div>
       </div>
       <div class="card">
         <img src="sreedharan.jpg" alt="SREEDHARAN">
-        <div class="stripe">SREEDHARAN <span>Manager (11)</span></div>
+        <div class="ribbon">SREEDHARAN<br><span>Manager (11)</span></div>
       </div>
     </div>
 
@@ -186,35 +152,35 @@
     <div class="card-grid">
       <div class="card">
         <img src="pakru.jpg" alt="PAKRU">
-        <div class="stripe">01 PAKRU <span>Goalkeeper</span></div>
+        <div class="ribbon">01 PAKRU<br><span>Goalkeeper</span></div>
       </div>
       <div class="card">
         <img src="shyamil.jpg" alt="SHYAMIL">
-        <div class="stripe">10 SHYAMIL <span>Player</span></div>
+        <div class="ribbon">10 SHYAMIL<br><span>Player</span></div>
       </div>
       <div class="card">
         <img src="sudeep.jpg" alt="SUDEEP">
-        <div class="stripe">04 SUDEEP <span>Player</span></div>
+        <div class="ribbon">04 SUDEEP<br><span>Player</span></div>
       </div>
       <div class="card">
         <img src="sai.jpg" alt="SAI">
-        <div class="stripe">06 SAI <span>Player</span></div>
+        <div class="ribbon">06 SAI<br><span>Player</span></div>
       </div>
       <div class="card">
         <img src="nived.jpg" alt="NIVED">
-        <div class="stripe">99 NIVED <span>Forward</span></div>
+        <div class="ribbon">99 NIVED<br><span>Forward</span></div>
       </div>
       <div class="card">
         <img src="sarath.jpg" alt="SARATH SREE">
-        <div class="stripe">03 SARATH SREE <span>Midfielder</span></div>
+        <div class="ribbon">03 SARATH SREE<br><span>Midfielder</span></div>
       </div>
       <div class="card">
         <img src="gireesh.jpg" alt="GIREESH">
-        <div class="stripe">76 GIREESH <span>Midfielder</span></div>
+        <div class="ribbon">76 GIREESH<br><span>Midfielder</span></div>
       </div>
       <div class="card">
         <img src="adhi.jpg" alt="ADHI">
-        <div class="stripe">17 ADHI <span>Forward</span></div>
+        <div class="ribbon">17 ADHI<br><span>Forward</span></div>
       </div>
     </div>
 
@@ -223,14 +189,17 @@
     <div class="card-grid">
       <div class="card">
         <img src="sponsor1.png" alt="Sponsor 1">
-        <div class="stripe">SHARATH CHANDRAN <span>Sponsor</span></div>
+        <div class="ribbon">SHARATH CHANDRAN<br><span>Sponsor</span></div>
       </div>
       <div class="card">
         <img src="sponsor2.png" alt="Sponsor 2">
-        <div class="stripe">SUDHEESH K V <span>Sponsor</span></div>
+        <div class="ribbon">SUDHEESH K V<br><span>Sponsor</span></div>
       </div>
     </div>
 
+    <footer>
+      © 2025 Sporting FP. All rights reserved.
+    </footer>
   </div>
 </body>
 </html>
