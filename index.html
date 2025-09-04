@@ -3,35 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sporting FP Poster</title>
+  <title>Sporting FC Poster</title>
   <style>
+    @page {
+      size: A4 landscape;   /* ensures printable A4 size */
+      margin: 0;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
-                  url('background.jpeg') no-repeat center center/cover;
+      background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+                  url('background.jpg') no-repeat center center/cover;
       color: #fff;
       text-align: center;
-      width: 3508px;   /* A4 landscape in pixels at 300 DPI */
-      height: 2480px;
+      width: 100%;
+      height: 100vh; /* fit to screen but A4 ratio */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       overflow: hidden;
     }
 
     .container {
-      width: 100%;
-      height: 100%;
       padding: 40px;
       box-sizing: border-box;
     }
 
     /* Title */
     .title {
-      font-size: 120px;
+      font-size: 80px;
       font-weight: 900;
       color: #ffffff;
       letter-spacing: 3px;
       animation: glow 2s infinite alternate;
-      margin-top: 30px;
+      margin-top: 10px;
+      text-transform: uppercase;
     }
 
     @keyframes glow {
@@ -40,32 +47,35 @@
     }
 
     .subtitle {
-      font-size: 48px;
+      font-size: 32px;
       font-weight: 600;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
 
     /* Card grid */
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 30px;
-      margin-bottom: 60px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      justify-items: center;
+      margin-bottom: 40px;
     }
 
     .card {
       position: relative;
       background: #111;
-      border-radius: 20px;
+      border-radius: 15px;
       overflow: hidden;
       box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+      width: 250px;
+      height: 350px;
     }
 
     .card img {
       width: 100%;
-      display: block;
+      height: 100%;
       object-fit: cover;
-      height: 400px;
+      display: block;
       transition: transform 0.4s ease;
     }
 
@@ -76,32 +86,35 @@
     /* Ribbon */
     .ribbon {
       position: absolute;
-      left: -60px;
+      left: -55px;
       top: 45%;
       transform: rotate(-90deg);
       background: #c8102e;
       color: #fff;
-      font-size: 24px;
+      font-size: 18px;
       font-weight: 700;
-      padding: 10px 60px;
+      padding: 8px 50px;
       text-transform: uppercase;
       box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+      white-space: nowrap;
     }
 
     footer {
-      margin-top: 60px;
-      font-size: 28px;
+      font-size: 20px;
       color: #bbb;
+      margin-bottom: 15px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="title">SPORTING FP</div>
-    <div class="subtitle">PFL Season 2 - Our Team</div>
+    <div>
+      <div class="title">SPORTING FC</div>
+      <div class="subtitle">PFL Season 2 - Our Team</div>
+    </div>
 
     <!-- Managers -->
-    <h2 style="font-size:40px;">Managers</h2>
+    <h2 style="font-size:30px; margin: 20px 0;">Managers</h2>
     <div class="card-grid">
       <div class="card">
         <img src="ruby.jpg" alt="RUBY">
@@ -114,7 +127,7 @@
     </div>
 
     <!-- Players -->
-    <h2 style="font-size:40px;">Players</h2>
+    <h2 style="font-size:30px; margin: 20px 0;">Players</h2>
     <div class="card-grid">
       <div class="card">
         <img src="pakru.jpg" alt="PAKRU">
@@ -151,7 +164,7 @@
     </div>
 
     <!-- Sponsors -->
-    <h2 style="font-size:40px;">Sponsors</h2>
+    <h2 style="font-size:30px; margin: 20px 0;">Sponsors</h2>
     <div class="card-grid">
       <div class="card">
         <img src="sponsor1.png" alt="Sponsor 1">
@@ -162,10 +175,10 @@
         <div class="ribbon">SUDHEESH K V<br><span>Sponsor</span></div>
       </div>
     </div>
-
-    <footer>
-      © 2025 Sporting FP. All rights reserved.
-    </footer>
   </div>
+
+  <footer>
+    © 2025 Sporting FP. All rights reserved.
+  </footer>
 </body>
 </html>
