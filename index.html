@@ -1,218 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sporting FP</title>
+  <title>Team Lineup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --muted: #94a3b8;
+      --text: #e5e7eb;
+      --accent: #22d3ee;
+      --chip: #1f2937;
+      --border: #1f2937;
+      --success: #10b981;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f4f4 url('stadium-bg.jpg') no-repeat center center/cover;
-      color: #111;
-      text-align: center;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+      background: linear-gradient(135deg, #020617, #0b1226);
+      color: var(--text)
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 24px
     }
 
-    /* Title animation */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px
+    }
+
     .title {
-      font-size: 64px;
-      font-weight: 900;
-      color: #c8102e;
-      letter-spacing: 2px;
-      animation: glow 2s infinite alternate;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      font-size: clamp(22px, 3vw, 34px)
     }
 
-    @keyframes glow {
-      from { text-shadow: 0 0 5px #c8102e, 0 0 10px #c8102e; }
-      to { text-shadow: 0 0 15px #ff1a40, 0 0 30px #ff1a40; }
-    }
-
-    .subtitle {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: fadeIn 2s ease forwards;
-      animation-delay: 0.5s;
-    }
-
-    /* Reusable card (for managers, players, sponsors) */
-    .card-grid {
+    .grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-      margin-bottom: 40px;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px
     }
 
     .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
       position: relative;
-      background: #eee;
+    }
+
+    .section-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--muted);
+      margin: 0 0 10px 0
+    }
+
+    /* Player chip */
+    .player {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .02), rgba(255, 255, 255, .01));
+      border: 1px solid var(--border);
+      padding: 12px;
+      border-radius: 14px
+    }
+
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .num {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
       border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      transform: translateY(30px);
-      opacity: 0;
-      animation: slideUp 1s ease forwards;
+      background: var(--chip);
+      border: 1px solid var(--border);
+      font-weight: 800
     }
 
-    .card img {
-      width: 100%;
-      display: block;
-      object-fit: cover;
-      height: 180px;
-      transition: transform 0.4s ease;
-    }
-
-    .card:hover img {
-      transform: scale(1.1);
-    }
-
-    .stripe {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(200,16,46,0.9);
-      color: white;
-      padding: 10px;
-      font-size: 16px;
+    .name {
       font-weight: 700;
-      text-align: left;
-      transform: translateY(100%);
-      transition: transform 0.4s ease;
+      font-size: 16px;
+      letter-spacing: .2px
     }
 
-    .card:hover .stripe {
-      transform: translateY(0);
-    }
-    .ruby-card img {
-  margin-top: 15px;
-}
-
- .card img[alt="RUBY"] {
-  margin-top: 30px; /* Adjust the value as needed */
-}
-    .stripe span {
-      display: block;
-      font-size: 14px;
-      font-weight: 400;
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap
     }
 
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    .tag {
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--chip);
+      border: 1px solid var(--border);
+      color: var(--muted)
     }
 
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    .tag.success {
+      color: #d1fae5;
+      background: rgba(16, 185, 129, .15);
+      border-color: rgba(16, 185, 129, .25)
     }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .card-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .title {
-        font-size: 48px;
-      }
+    /* Formation board */
+    .board {
+      aspect-ratio: 10/6;
+      background: radial-gradient(ellipse at center, #0b4b2a 0%, #0a3f24 45%, #092d1b 100%);
+      border-radius: 18px;
+      position: relative;
+      border: 2px solid rgba(255, 255, 255, .08);
+      overflow: hidden
     }
 
-    @media (max-width: 480px) {
-      .card-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .title {
-        font-size: 36px;
-      }
+    .board::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      top: 0;
+      height: 100%;
+      background: rgba(255, 255, 255, .2)
     }
 
-    footer {
-      margin-top: 40px;
-      font-size: 14px;
-      color: #666;
+    .spot {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px
+    }
+
+    .badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255, 255, 255, .25);
+      backdrop-filter: blur(2px);
+      font-weight: 800
+    }
+
+    .spot small {
+      font-size: 12px;
+      color: #e2e8f0;
+      opacity: .9
+    }
+
+    /* Ribbon Style */
+    .ribbon {
+      position: absolute;
+      top: 20px;
+      right: -40px;
+      transform: rotate(45deg);
+      background: var(--accent);
+      color: #0f172a;
+      padding: 8px 40px;
+      font-weight: bold;
+      font-size: 13px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+      text-align: center;
     }
   </style>
 </head>
+
 <body>
   <div class="container">
-    <div class="title">SPORTING FP</div>
-    <div class="subtitle">Our Team</div>
+    <header>
+      <div class="title">Team Lineup</div>
+    </header>
 
-    <!-- Managers -->
-    <h2>Managers</h2>
-    <div class="card-grid">
-     <div class="card ruby-card">
-  <img src="ruby.jpg" alt="RUBY">
-  <div class="stripe">RUBY <span>Manager (09)</span></div>
-</div>
-      <div class="card">
-        <img src="sreedharan.jpg" alt="SREEDHARAN">
-        <div class="stripe">SREEDHARAN <span>Manager (11)</span></div>
+    <!-- Top Leaders / Captains -->
+    <section class="card" style="grid-column:1/-1; margin-bottom:16px">
+      <div class="section-title">Captains</div>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
+        <div class="player">
+          <div class="left">
+            <div class="num">09</div>
+            <div class="name">RUBY</div>
+          </div>
+          <div class="tags">
+            <span class="tag success">Captain</span>
+          </div>
+        </div>
+        <div class="player">
+          <div class="left">
+            <div class="num">11</div>
+            <div class="name">SREEDHARAN</div>
+          </div>
+          <div class="tags">
+            <span class="tag success">Vice-Captain</span>
+          </div>
+        </div>
       </div>
+    </section>
+
+    <div class="grid">
+      <!-- Formation Board -->
+      <section class="card" style="grid-column: span 7">
+        <div class="section-title">Formation</div>
+        <div class="board">
+          <!-- Ribbon Sponsor -->
+          <div class="ribbon">Sponsored by SHARATH &amp; SUDHEESH</div>
+
+          <!-- GK -->
+          <div class="spot" style="left:50%; bottom:6%">
+            <div class="badge">01</div>
+            <small>PAKRU • GK</small>
+          </div>
+          <!-- Back line -->
+          <div class="spot" style="left:15%; bottom:24%">
+            <div class="badge">03</div><small>SARATH SREE</small>
+          </div>
+          <div class="spot" style="left:38%; bottom:28%">
+            <div class="badge">04</div><small>SUDEEP</small>
+          </div>
+          <div class="spot" style="left:62%; bottom:28%">
+            <div class="badge">06</div><small>SAI</small>
+          </div>
+          <div class="spot" style="left:85%; bottom:24%">
+            <div class="badge">76</div><small>GIREESH</small>
+          </div>
+          <!-- Midfield -->
+          <div class="spot" style="left:28%; bottom:46%">
+            <div class="badge">99</div><small>NIVED</small>
+          </div>
+          <div class="spot" style="left:72%; bottom:46%">
+            <div class="badge">10</div><small>SHYAMIL</small>
+          </div>
+          <!-- Forwards -->
+          <div class="spot" style="left:40%; bottom:66%">
+            <div class="badge">17</div><small>ADHI</small>
+          </div>
+          <div class="spot" style="left:60%; bottom:66%">
+            <div class="badge">03</div><small>SARATH SREE</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Full Roster -->
+      <section class="card" style="grid-column: span 5">
+        <div class="section-title">Players</div>
+        <div class="stack" style="display:flex;flex-direction:column;gap:10px">
+          <div class="player">
+            <div class="left">
+              <div class="num">01</div>
+              <div class="name">PAKRU</div>
+            </div>
+            <div class="tags"><span class="tag success">GK</span></div>
+          </div>
+          <div class="player">
+            <div class="left">
+              <div class="num">10</div>
+              <div class="name">SHYAMIL</div>
+            </div>
+          </div>
+          <div class="player">
+            <div class="left">
+              <div class="num">04</div>
+              <div class="name">SUDEEP</div>
+            </div>
+          </div>
+          <div class="player">
+            <div class="left">
+              <div class="num">06</div>
+              <div class="name">SAI</div>
+            </div>
+          </div>
+          <div class="player">
+            <div class="left">
+              <div class="num">99</div>
+              <div class="name">NIVED</div>
+            </div>
+          </div>
+          <div class="player">
+            <div class="left">
+              <div class="num">03</div>
+              <div class="name">SARATH SREE</div>
+            </div>
+          </div>
+          <div class="player">
+            <div class="left">
+              <div class="num">76</div>
+              <div class="name">GIREESH</div>
+            </div>
+          </div>
+          <div class="player">
+            <div class="left">
+              <div class="num">17</div>
+              <div class="name">ADHI</div>
+            </div>
+            <div class="tags"><span class="tag">Note: 38</span></div>
+          </div>
+        </div>
+
+        <div class="section-title" style="margin-top:18px">Kids</div>
+        <div class="stack" style="display:flex;flex-direction:column;gap:10px">
+          <div class="player">
+            <div class="left">
+              <div class="num">07</div>
+              <div class="name">ADHIDEV</div>
+            </div>
+            <div class="tags"><span class="tag">Note: 26</span></div>
+          </div>
+          <div class="player">
+            <div class="left">
+              <div class="num">10</div>
+              <div class="name">ADVIK</div>
+            </div>
+            <div class="tags"><span class="tag">Note: 22</span></div>
+          </div>
+        </div>
+      </section>
     </div>
-
-    <!-- Players -->
-    <h2>Players</h2>
-    <div class="card-grid">
-      <div class="card">
-        <img src="pakru.jpg" alt="PAKRU">
-        <div class="stripe">01 PAKRU <span>Goalkeeper</span></div>
-      </div>
-      <div class="card">
-        <img src="shyamil.jpg" alt="SHYAMIL">
-        <div class="stripe">10 SHYAMIL <span>Player</span></div>
-      </div>
-      <div class="card">
-        <img src="sudeep.jpg" alt="SUDEEP">
-        <div class="stripe">04 SUDEEP <span>Player</span></div>
-      </div>
-      <div class="card">
-        <img src="sai.jpg" alt="SAI">
-        <div class="stripe">06 SAI <span>Player</span></div>
-      </div>
-      <div class="card">
-        <img src="nived.jpg" alt="NIVED">
-        <div class="stripe">99 NIVED <span>Forward</span></div>
-      </div>
-      <div class="card">
-        <img src="sarath.jpg" alt="SARATH SREE">
-        <div class="stripe">03 SARATH SREE <span>Midfielder</span></div>
-      </div>
-      <div class="card">
-        <img src="gireesh.jpg" alt="GIREESH">
-        <div class="stripe">76 GIREESH <span>Midfielder</span></div>
-      </div>
-      <div class="card">
-        <img src="adhi.jpg" alt="ADHI">
-        <div class="stripe">17 ADHI <span>Forward</span></div>
-      </div>
-    </div>
-
-    <!-- Sponsors -->
-    <h2>Sponsors</h2>
-    <div class="card-grid">
-      <div class="card">
-        <img src="sponsor1.png" alt="Sponsor 1">
-        <div class="stripe">SHARATH CHANDRAN <span>Sponsor</span></div>
-      </div>
-      <div class="card">
-        <img src="sponsor2.png" alt="Sponsor 2">
-        <div class="stripe">SUDHEESH K V <span>Sponsor</span></div>
-      </div>
-    </div>
-
-    
   </div>
 </body>
+
 </html>
-
-
-
