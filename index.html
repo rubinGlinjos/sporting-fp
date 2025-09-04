@@ -73,18 +73,19 @@
       transform: scale(1.1);
     }
 
-    /* Diagonal Ribbon */
+    /* Bottom-left to center ribbon */
     .stripe {
       position: absolute;
-      top: 15px;
-      left: -40px;
-      transform: rotate(-45deg);
+      bottom: 20px;       /* distance from bottom */
+      left: 0;            /* align left */
+      width: 70%;         /* extend to center */
       background: rgba(200,16,46,0.9);
       color: #fff;
-      padding: 6px 60px;
+      padding: 10px;
       font-size: 14px;
       font-weight: bold;
-      text-align: center;
+      text-align: left;
+      border-top-right-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
 
