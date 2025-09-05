@@ -88,32 +88,25 @@
       transform: scale(1.1);
     }
 
-    /* Ribbon style - bottom right */
-    .ribbon {
+    /* Card footer (name + position) */
+    .card-footer {
       position: absolute;
-      bottom: 15px;
-      right: -35px;
-      transform: rotate(-45deg);
-      background: #c8102e;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.75);
       color: #fff;
-      font-weight: 700;
-      padding: 8px 45px;
-      text-transform: uppercase;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      padding: 8px 10px;
       text-align: center;
+      font-size: 16px;
+      font-weight: bold;
     }
 
-    /* Name bigger */
-    .ribbon span {
+    .card-footer span {
       display: block;
-      font-size: 12px;   /* smaller for position */
-      font-weight: 400;
-      margin-top: 2px;
-    }
-
-    .ribbon strong {
-      font-size: 16px;   /* larger for name */
-      display: block;
+      font-size: 13px;
+      font-weight: normal;
+      opacity: 0.85;
     }
 
     /* Animations */
@@ -176,14 +169,108 @@
 
     <div class="subtitle">Our Team</div>
 
-    <!-- Example card -->
-    <div class="card">
-      <img src="pakru.jpg" alt="PAKRU">
-      <div class="ribbon">
-        <strong>01 PAKRU</strong>
-        <span>Goalkeeper</span>
+    <!-- Managers -->
+    <h2>Managers</h2>
+    <div class="managers-grid">
+      <div class="card">
+        <img src="ruby.jpg" alt="RUBY">
+        <div class="card-footer">RUBY <span>Manager (09)</span></div>
+      </div>
+      <div class="card">
+        <img src="profile.png" alt="SREEDHARAN">
+        <div class="card-footer">SREEDHARAN <span>Manager (11)</span></div>
       </div>
     </div>
+
+    <!-- Players -->
+    <h2>Players</h2>
+    <div class="card-grid players-grid">
+      <div class="card">
+        <img src="pakru.jpg" alt="PAKRU">
+        <div class="card-footer">01 PAKRU <span>Goalkeeper</span></div>
+      </div>
+      <div class="card">
+        <img src="shyamil.jpg" alt="SHYAMIL">
+        <div class="card-footer">10 SHYAMIL <span>Player</span></div>
+      </div>
+      <div class="card">
+        <img src="sudeep.jpg" alt="SUDEEP">
+        <div class="card-footer">04 SUDEEP <span>Player</span></div>
+      </div>
+      <div class="card">
+        <img src="sai.jpg" alt="SAI">
+        <div class="card-footer">06 SAI <span>Player</span></div>
+      </div>
+      <div class="card">
+        <img src="nived.jpg" alt="NIVED">
+        <div class="card-footer">99 NIVED <span>Forward</span></div>
+      </div>
+      <div class="card">
+        <img src="sarath.jpg" alt="SARATH SREE">
+        <div class="card-footer">03 SARATH SREE <span>Midfielder</span></div>
+      </div>
+      <div class="card">
+        <img src="gireesh.jpg" alt="GIREESH">
+        <div class="card-footer">76 GIREESH <span>Midfielder</span></div>
+      </div>
+      <div class="card">
+        <img src="adhi.jpg" alt="ADHI">
+        <div class="card-footer">17 ADHI <span>Forward</span></div>
+      </div>
+    </div>
+
+    <!-- Sponsors -->
+    <h2>Sponsors</h2>
+    <div class="sponsors-grid">
+      <div class="card">
+        <img src="profile.png" alt="Sponsor 1">
+        <div class="card-footer">SHARATH CHANDRAN <span>Sponsor</span></div>
+      </div>
+      <div class="card">
+        <img src="profile.png" alt="Sponsor 2">
+        <div class="card-footer">SUDHEESH K V <span>Sponsor</span></div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-row">
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+      </div>
+      <div class="footer-row">
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+      </div>
+      <div class="footer-row">
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+      </div>
+    </footer>
   </div>
 </body>
 </html>
