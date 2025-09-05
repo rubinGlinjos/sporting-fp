@@ -48,13 +48,12 @@
     /* Base card grid */
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr); /* default 3 columns */
+      grid-template-columns: repeat(3, 1fr);
       gap: 15px;
       margin-bottom: 40px;
       justify-items: center;
     }
 
-    /* Centered grid for managers and sponsors */
     .managers-grid,
     .sponsors-grid {
       display: flex;
@@ -70,7 +69,7 @@
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-      aspect-ratio: 1 / 1;   /* Square */
+      aspect-ratio: 1 / 1;
       width: 100%;
       max-width: 250px;
       transform: translateY(30px);
@@ -89,19 +88,32 @@
       transform: scale(1.1);
     }
 
-    /* Ribbon style */
+    /* Ribbon style - bottom right */
     .ribbon {
       position: absolute;
-      left: -40px;
-      top: 40%;
-      transform: rotate(-90deg);
+      bottom: 15px;
+      right: -35px;
+      transform: rotate(-45deg);
       background: #c8102e;
       color: #fff;
-      font-size: 14px;
       font-weight: 700;
-      padding: 6px 40px;
+      padding: 8px 45px;
       text-transform: uppercase;
       box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      text-align: center;
+    }
+
+    /* Name bigger */
+    .ribbon span {
+      display: block;
+      font-size: 12px;   /* smaller for position */
+      font-weight: 400;
+      margin-top: 2px;
+    }
+
+    .ribbon strong {
+      font-size: 16px;   /* larger for name */
+      display: block;
     }
 
     /* Animations */
@@ -113,44 +125,6 @@
     @keyframes slideUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .card-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .title {
-        font-size: 48px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .card-grid {
-        grid-template-columns: 1fr;
-      }
-      .title {
-        font-size: 36px;
-      }
-    }
-
-    /* Print fix */
-    @media print {
-      .card {
-        aspect-ratio: 1 / 1;
-        height: auto !important;
-      }
-
-      .card img {
-        aspect-ratio: 1 / 1;
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover;
-      }
-
-      .card-grid {
-        grid-template-columns: repeat(3, 1fr) !important;
-      }
     }
 
     footer {
@@ -173,7 +147,6 @@
       white-space: nowrap;
     }
 
-    /* Title row */
     .title-row {
       display: flex;
       align-items: center;
@@ -203,109 +176,14 @@
 
     <div class="subtitle">Our Team</div>
 
-    <!-- Managers -->
-    <h2>Managers</h2>
-    <div class="managers-grid">
-      <div class="card">
-        <img src="ruby.jpg" alt="RUBY">
-        <div class="ribbon">RUBY<br><span>Manager (09)</span></div>
-      </div>
-      <div class="card">
-        <img src="profile.png" alt="SREEDHARAN">
-        <div class="ribbon">SREEDHARAN<br><span>Manager (11)</span></div>
+    <!-- Example card -->
+    <div class="card">
+      <img src="pakru.jpg" alt="PAKRU">
+      <div class="ribbon">
+        <strong>01 PAKRU</strong>
+        <span>Goalkeeper</span>
       </div>
     </div>
-
-    <!-- Players -->
-    <h2>Players</h2>
-    <div class="card-grid players-grid">
-      <div class="card">
-        <img src="pakru.jpg" alt="PAKRU">
-        <div class="ribbon">01 PAKRU<br><span>Goalkeeper</span></div>
-      </div>
-      <div class="card">
-        <img src="shyamil.jpg" alt="SHYAMIL">
-        <div class="ribbon">10 SHYAMIL<br><span>Player</span></div>
-      </div>
-      <div class="card">
-        <img src="sudeep.jpg" alt="SUDEEP">
-        <div class="ribbon">04 SUDEEP<br><span>Player</span></div>
-      </div>
-      <div class="card">
-        <img src="sai.jpg" alt="SAI">
-        <div class="ribbon">06 SAI<br><span>Player</span></div>
-      </div>
-      <div class="card">
-        <img src="nived.jpg" alt="NIVED">
-        <div class="ribbon">99 NIVED<br><span>Forward</span></div>
-      </div>
-      <div class="card">
-        <img src="sarath.jpg" alt="SARATH SREE">
-        <div class="ribbon">03 SARATH SREE<br><span>Midfielder</span></div>
-      </div>
-      <div class="card">
-        <img src="gireesh.jpg" alt="GIREESH">
-        <div class="ribbon">76 GIREESH<br><span>Midfielder</span></div>
-      </div>
-      <div class="card">
-        <img src="adhi.jpg" alt="ADHI">
-        <div class="ribbon">17 ADHI<br><span>Forward</span></div>
-      </div>
-    </div>
-
-    <!-- Sponsors -->
-    <h2>Sponsors</h2>
-    <div class="sponsors-grid">
-      <div class="card">
-        <img src="profile.png" alt="Sponsor 1">
-        <div class="ribbon">SHARATH CHANDRAN<br><span>Sponsor</span></div>
-      </div>
-      <div class="card">
-        <img src="profile.png" alt="Sponsor 2">
-        <div class="ribbon">SUDHEESH K V<br><span>Sponsor</span></div>
-      </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-      <div class="footer-row">
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-      </div>
-      <div class="footer-row">
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-      </div>
-      <div class="footer-row">
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-        <div class="footer-item">PFL SEASON 2</div>
-      </div>
-    </footer>
   </div>
 </body>
 </html>
-
