@@ -48,10 +48,19 @@
     /* Base card grid */
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr); /* Always 3 columns */
+      grid-template-columns: repeat(3, 1fr); /* default 3 columns */
       gap: 15px;
       margin-bottom: 40px;
-      justify-items: center; /* Center items if row not full */
+      justify-items: center;
+    }
+
+    /* Centered grid for managers and sponsors */
+    .managers-grid,
+    .sponsors-grid {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
     /* Card style */
@@ -62,8 +71,8 @@
       overflow: hidden;
       box-shadow: 0 4px 15px rgba(0,0,0,0.6);
       aspect-ratio: 1 / 1;   /* Square */
-      width: 100%;           /* Fill column */
-      max-width: 250px;      /* Optional limit */
+      width: 100%;
+      max-width: 250px;
       transform: translateY(30px);
       opacity: 0;
       animation: slideUp 1s ease forwards;
@@ -146,8 +155,22 @@
 
     footer {
       margin-top: 40px;
-      font-size: 14px;
-      color: #bbb;
+      font-size: 24px;
+      font-weight: bold;
+      color: #ff1a40;
+      text-shadow: 0 0 5px #c8102e;
+      line-height: 2;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .footer-item {
+      white-space: nowrap;
     }
 
     /* Title row */
@@ -182,7 +205,7 @@
 
     <!-- Managers -->
     <h2>Managers</h2>
-    <div class="card-grid managers-grid">
+    <div class="managers-grid">
       <div class="card">
         <img src="ruby.jpg" alt="RUBY">
         <div class="ribbon">RUBY<br><span>Manager (09)</span></div>
@@ -232,7 +255,7 @@
 
     <!-- Sponsors -->
     <h2>Sponsors</h2>
-    <div class="card-grid sponsors-grid">
+    <div class="sponsors-grid">
       <div class="card">
         <img src="profile.png" alt="Sponsor 1">
         <div class="ribbon">SHARATH CHANDRAN<br><span>Sponsor</span></div>
@@ -243,8 +266,44 @@
       </div>
     </div>
 
+    <!-- Footer -->
     <footer>
-      © 2025 Sporting FC. All rights reserved.
+      <div class="footer-row">
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+      </div>
+      <div class="footer-row">
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+      </div>
+      <div class="footer-row">
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="footer-item">PFL SEASON 2</div>
+      </div>
     </footer>
   </div>
 </body>
