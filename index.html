@@ -21,7 +21,7 @@
       padding: 20px;
     }
 
-    /* Title */
+    /* Title animation */
     .title {
       font-size: 64px;
       font-weight: 900;
@@ -29,14 +29,6 @@
       letter-spacing: 2px;
       animation: glow 2s infinite alternate;
       margin-top: 20px;
-    }
-
-    .season {
-      font-size: 28px;
-      font-weight: bold;
-      margin-top: 5px;
-      color: #ffcc00;
-      text-shadow: 0 0 10px #000, 0 0 20px #c8102e;
     }
 
     @keyframes glow {
@@ -47,27 +39,19 @@
     .subtitle {
       font-size: 24px;
       font-weight: 600;
-      margin: 15px 0;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+      animation-delay: 0.5s;
     }
 
-    /* Card grid */
+    /* Base card grid */
     .card-grid {
       display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Always 3 columns */
       gap: 15px;
       margin-bottom: 40px;
-    }
-
-    /* Different layouts for each section */
-    .managers-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .players-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .sponsors-grid {
-      grid-template-columns: repeat(2, 1fr);
+      justify-items: center; /* Center items if row not full */
     }
 
     /* Card style */
@@ -77,14 +61,18 @@
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-      aspect-ratio: 1 / 1; /* square cards */
+      aspect-ratio: 1 / 1;   /* Square */
+      width: 100%;           /* Fill column */
+      max-width: 250px;      /* Optional limit */
+      transform: translateY(30px);
+      opacity: 0;
+      animation: slideUp 1s ease forwards;
     }
 
     .card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
       transition: transform 0.4s ease;
     }
 
@@ -92,7 +80,7 @@
       transform: scale(1.1);
     }
 
-    /* Ribbon */
+    /* Ribbon style */
     .ribbon {
       position: absolute;
       left: -40px;
@@ -107,14 +95,53 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.4);
     }
 
-    /* Print adjustments */
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .title {
+        font-size: 48px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+      .title {
+        font-size: 36px;
+      }
+    }
+
+    /* Print fix */
     @media print {
       .card {
         aspect-ratio: 1 / 1;
+        height: auto !important;
       }
-      .managers-grid { grid-template-columns: repeat(2, 1fr) !important; }
-      .players-grid { grid-template-columns: repeat(3, 1fr) !important; }
-      .sponsors-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+      .card img {
+        aspect-ratio: 1 / 1;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+      }
+
+      .card-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
     }
 
     footer {
@@ -122,39 +149,98 @@
       font-size: 14px;
       color: #bbb;
     }
+
+    /* Title row */
+    .title-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .title-row .title {
+      font-size: 120px;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 0 15px #c8102e, 0 0 30px #ff1a40;
+    }
+
+    .logo {
+      width: 150px;
+      height: auto;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="title">SPORTING FC</div>
-    <div class="season">PFL SEASON 2</div>
+    <div class="title-row">
+      <div class="title">SPORTING FC</div>
+    </div>
+
     <div class="subtitle">Our Team</div>
 
     <!-- Managers -->
     <h2>Managers</h2>
     <div class="card-grid managers-grid">
-      <div class="card"><img src="ruby.jpg" alt="RUBY"><div class="ribbon">RUBY<br><span>Manager (09)</span></div></div>
-      <div class="card"><img src="profile.png" alt="SREEDHARAN"><div class="ribbon">SREEDHARAN<br><span>Manager (11)</span></div></div>
+      <div class="card">
+        <img src="ruby.jpg" alt="RUBY">
+        <div class="ribbon">RUBY<br><span>Manager (09)</span></div>
+      </div>
+      <div class="card">
+        <img src="profile.png" alt="SREEDHARAN">
+        <div class="ribbon">SREEDHARAN<br><span>Manager (11)</span></div>
+      </div>
     </div>
 
     <!-- Players -->
     <h2>Players</h2>
     <div class="card-grid players-grid">
-      <div class="card"><img src="pakru.jpg" alt="PAKRU"><div class="ribbon">01 PAKRU<br><span>Goalkeeper</span></div></div>
-      <div class="card"><img src="shyamil.jpg" alt="SHYAMIL"><div class="ribbon">10 SHYAMIL<br><span>Player</span></div></div>
-      <div class="card"><img src="sudeep.jpg" alt="SUDEEP"><div class="ribbon">04 SUDEEP<br><span>Player</span></div></div>
-      <div class="card"><img src="sai.jpg" alt="SAI"><div class="ribbon">06 SAI<br><span>Player</span></div></div>
-      <div class="card"><img src="nived.jpg" alt="NIVED"><div class="ribbon">99 NIVED<br><span>Forward</span></div></div>
-      <div class="card"><img src="sarath.jpg" alt="SARATH"><div class="ribbon">03 SARATH SREE<br><span>Midfielder</span></div></div>
-      <div class="card"><img src="gireesh.jpg" alt="GIREESH"><div class="ribbon">76 GIREESH<br><span>Midfielder</span></div></div>
-      <div class="card"><img src="adhi.jpg" alt="ADHI"><div class="ribbon">17 ADHI<br><span>Forward</span></div></div>
+      <div class="card">
+        <img src="pakru.jpg" alt="PAKRU">
+        <div class="ribbon">01 PAKRU<br><span>Goalkeeper</span></div>
+      </div>
+      <div class="card">
+        <img src="shyamil.jpg" alt="SHYAMIL">
+        <div class="ribbon">10 SHYAMIL<br><span>Player</span></div>
+      </div>
+      <div class="card">
+        <img src="sudeep.jpg" alt="SUDEEP">
+        <div class="ribbon">04 SUDEEP<br><span>Player</span></div>
+      </div>
+      <div class="card">
+        <img src="sai.jpg" alt="SAI">
+        <div class="ribbon">06 SAI<br><span>Player</span></div>
+      </div>
+      <div class="card">
+        <img src="nived.jpg" alt="NIVED">
+        <div class="ribbon">99 NIVED<br><span>Forward</span></div>
+      </div>
+      <div class="card">
+        <img src="sarath.jpg" alt="SARATH SREE">
+        <div class="ribbon">03 SARATH SREE<br><span>Midfielder</span></div>
+      </div>
+      <div class="card">
+        <img src="gireesh.jpg" alt="GIREESH">
+        <div class="ribbon">76 GIREESH<br><span>Midfielder</span></div>
+      </div>
+      <div class="card">
+        <img src="adhi.jpg" alt="ADHI">
+        <div class="ribbon">17 ADHI<br><span>Forward</span></div>
+      </div>
     </div>
 
     <!-- Sponsors -->
     <h2>Sponsors</h2>
     <div class="card-grid sponsors-grid">
-      <div class="card"><img src="profile.png" alt="Sponsor 1"><div class="ribbon">SHARATH CHANDRAN<br><span>Sponsor</span></div></div>
-      <div class="card"><img src="profile.png" alt="Sponsor 2"><div class="ribbon">SUDHEESH K V<br><span>Sponsor</span></div></div>
+      <div class="card">
+        <img src="profile.png" alt="Sponsor 1">
+        <div class="ribbon">SHARATH CHANDRAN<br><span>Sponsor</span></div>
+      </div>
+      <div class="card">
+        <img src="profile.png" alt="Sponsor 2">
+        <div class="ribbon">SUDHEESH K V<br><span>Sponsor</span></div>
+      </div>
     </div>
 
     <footer>
