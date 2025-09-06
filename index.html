@@ -8,25 +8,12 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: url('1.jpeg') no-repeat center center/cover;
-      color: #fff;
-      text-align: center;
-      overflow-x: hidden;
-      position: relative;
-    }
+     background: url('1.jpeg') no-repeat center center/cover;
+color: #fff;
+text-align: center;
+overflow-x: hidden;
 
-    /* Dark overlay for better contrast */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      z-index: -1;
     }
-
     .container {
       max-width: 1000px;
       margin: 0 auto;
@@ -39,13 +26,13 @@
       font-weight: 900;
       color: #ffffff;
       letter-spacing: 2px;
+      animation: glow 2s infinite alternate;
       margin-top: 20px;
-      animation: pulse 2s infinite alternate;
     }
 
-    @keyframes pulse {
-      from { text-shadow: 0 0 15px #c8102e, 0 0 30px #ff1a40; }
-      to { text-shadow: 0 0 25px #ff1a40, 0 0 50px #ff3355; }
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #c8102e, 0 0 10px #c8102e; }
+      to { text-shadow: 0 0 15px #ff1a40, 0 0 30px #ff1a40; }
     }
 
     .subtitle {
@@ -55,18 +42,6 @@
       opacity: 0;
       animation: fadeIn 2s ease forwards;
       animation-delay: 0.5s;
-    }
-
-    /* Section headers */
-    h2 {
-      margin: 40px 0 20px;
-      font-size: 32px;
-      text-transform: uppercase;
-      color: #ff1a40;
-      text-shadow: 0 0 8px #000;
-      border-bottom: 2px solid #ff1a40;
-      display: inline-block;
-      padding-bottom: 5px;
     }
 
     /* Base card grid */
@@ -90,7 +65,7 @@
     .card {
       position: relative;
       background: #111;
-      border-radius: 16px;
+      border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 4px 15px rgba(0,0,0,0.6);
       aspect-ratio: 1 / 1;
@@ -99,7 +74,6 @@
       transform: translateY(30px);
       opacity: 0;
       animation: slideUp 1s ease forwards;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .card img {
@@ -107,11 +81,6 @@
       height: 100%;
       object-fit: cover;
       transition: transform 0.4s ease;
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 25px rgba(255,26,64,0.6);
     }
 
     .card:hover img {
@@ -128,7 +97,7 @@
       color: #fff;
       padding: 8px 10px;
       text-align: center;
-      font-size: 18px;
+      font-size: 18px;   /* ⬅️ Name bigger */
       font-weight: bold;
     }
 
@@ -153,23 +122,23 @@
     /* Footer styling */
     footer {
       margin-top: 40px;
-      font-size: 16px;
+      font-size: 16px; /* ⬅️ Smaller than before */
       font-weight: bold;
       color: #fff;
       text-shadow: 0 0 5px #c8102e;
       line-height: 2;
-      overflow: hidden;
-      white-space: nowrap;
     }
 
     .footer-row {
-      display: inline-block;
-      animation: scroll 15s linear infinite;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
     }
 
-    @keyframes scroll {
-      from { transform: translateX(100%); }
-      to { transform: translateX(-100%); }
+    .footer-item {
+      white-space: nowrap;
     }
 
     .diamond {
@@ -196,25 +165,6 @@
     .logo {
       width: 150px;
       height: auto;
-    }
-
-    /* Responsive grid */
-    @media (max-width: 768px) {
-      .card-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .title-row .title {
-        font-size: 80px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .card-grid {
-        grid-template-columns: 1fr;
-      }
-      .title-row .title {
-        font-size: 50px;
-      }
     }
   </style>
 </head>
@@ -292,9 +242,22 @@
     <!-- Footer -->
     <footer>
       <div class="footer-row">
-        <span>PFL SEASON 2 ♦ PFL SEASON 2 ♦ PFL SEASON 2 ♦ PFL SEASON 2 ♦ PFL SEASON 2 ♦ PFL SEASON 2 ♦ PFL SEASON 2</span>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="diamond">♦</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="diamond">♦</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="diamond">♦</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="diamond">♦</div>
+        <div class="footer-item">PFL SEASON 2</div>
+        <div class="diamond">♦</div>
+        <div class="footer-item">PFL SEASON 2</div>
       </div>
     </footer>
   </div>
 </body>
 </html>
+
+
+
